@@ -1,5 +1,7 @@
 const http = require('http')
 
+const path = require('path')
+
 const express = require('express')
 const bodyparser = require('body-parser')
 
@@ -12,6 +14,8 @@ const shopRoutes = require('./routes/shop')
  * before reaching other requests data will be para  sed
  */
 app.use(bodyparser.urlencoded({ extended: false }))
+/** gives read access to public folder in root dir */
+app.use(express.static(path.join(__dirname, 'public')))
 
 /** 
  * calling methdo use defined by express
